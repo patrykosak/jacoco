@@ -51,8 +51,12 @@
 name: build (PR version)
 
 on:
+  push:
+    branches:
+      - "**"
   pull_request:
-    branches:  ['**']
+    branches:
+      - "**"
 permissions:
   pull-requests: write
 jobs:
