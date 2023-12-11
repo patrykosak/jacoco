@@ -1,6 +1,6 @@
 name: Validate and Test
 on:
-  push:
+  pull_request:
     branches-ignore:
       - gh-pages
 jobs:
