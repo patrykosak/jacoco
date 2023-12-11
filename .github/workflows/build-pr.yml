@@ -51,7 +51,7 @@
 name: build (PR version)
 
 on:
-  pull_request:
+  push:
     branches:
       - "**"
   workflow_dispatch:
@@ -98,7 +98,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: jacoco-report
-        path: target/site/jacoco-unit.zip
+        path: target/site/jacoco/
 
     - name: Add coverage to PR
       uses: madrapps/jacoco-report@v1.6.1
