@@ -51,9 +51,10 @@
 name: build (PR version)
 
 on:
-  pull_request:
+  push:
     branches:
       - "**"
+  workflow_dispatch:
 permissions:
   pull-requests: write
 jobs:
