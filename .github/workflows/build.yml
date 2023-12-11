@@ -7,7 +7,8 @@ on:
   pull_request:
     branches: [ master ]
   workflow_dispatch:
-
+permissions:
+  pull-requests: write
 jobs:
   build:
 
@@ -33,7 +34,7 @@ jobs:
         run: mvn -B package -Pcoverage
 
       - name: Generate JaCoCo badge
-        id: jacoco
+#        id: jacoco
         uses: cicirello/jacoco-badge-generator@v2
         with:
           badges-directory: badges
