@@ -41,8 +41,10 @@ public class HelloWorld {
 		// This can obviously be condensed into a single return statement.
 		// Deliberately making more complex so that we don't get 100% coverage.
 //		if (name.equals(greeting.substring(6, greeting.length()-1))) {
-			return true;
-//		} else {
+		System.out.println("s");
+		return true;
+//		}
+//		else {
 //			// weird unnecessary meaningless calculation that our tests won't cover
 //			int x = name.length() * 100;
 //			return x < 0;
