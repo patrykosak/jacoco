@@ -52,10 +52,8 @@ name: build (PR version)
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-  workflow_dispatch:
+    branches:
+      - "**"
 permissions:
   pull-requests: write
 jobs:
