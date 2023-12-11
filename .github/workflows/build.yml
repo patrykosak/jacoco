@@ -2,11 +2,10 @@ name: build
 
 on:
   push:
-    branches: [ main ]
-    paths: [ '**.java', '.github/workflows/build.yml' ]
-  workflow_dispatch:
-permissions:
-  pull-requests: write
+    branches:
+      - "**"
+permissions: write-all
+
 jobs:
   build:
 
