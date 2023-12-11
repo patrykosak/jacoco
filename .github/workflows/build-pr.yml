@@ -52,13 +52,13 @@ name: build (PR version)
 
 on:
   workflow_run:
-    workflows: ["build"]
+    workflows: [build]
     types:
       - completed
 permissions:
   pull-requests: write
 jobs:
-  notify:
+  download:
 
     runs-on: ubuntu-latest
 
