@@ -1,43 +1,70 @@
-name: Measure coverage
-
+name: Validate and Test
 on:
-  discussion:
-    branches: [ main ]
-#  pull_request:
-
+  push:
+    branches-ignore:
+      - gh-pages
 jobs:
-  build:
+  gradle:
     runs-on: ubuntu-latest
+    permissions:
+#      checks: write
+      pull-requests: write
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up JDK 1.8
-        uses: actions/setup-java@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
         with:
-          java-version: 1.8
-
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-
-      - name: Run Coverage
-        run: ./gradlew testCoverage
-
-      - name: Upload Report
-        uses: 'actions/upload-artifact@v2'
+          java-version: '11'
+          distribution: 'adopt'
+#      - name: Setup Gradle
+#        uses: gradle/gradle-build-action@v2.4.2
+#        with:
+#          gradle-version: 8.2.1
+#      - name: Change wrapper permissions
+#        run: chmod +x ./gradlew
+#      - name: Execute Gradle build
+#        run: ./gradlew clean build jacocoTestReport
+      - name: Build with Maven
+        run: mvn -B package -Pcoverage
+      - name: Publish Unit Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always() # clause guarantees that this action always runs, even if earlier steps (e.g., the unit test step) in your workflow fail.
         with:
-          name: report.xml
-          path: ${{ github.workspace }}/build/reports/jacoco/testCoverage/testCoverage.xml
-
-      - name: Jacoco Report to PR
+          files: "build/test-results/**/*.xml"
+      - name: Add coverage to PR
         id: jacoco
-        uses: madrapps/jacoco-report@v1.1
+        uses: madrapps/jacoco-report@v1.6.1  # requires at least two pushes to a PR, see https://github.com/Madrapps/jacoco-report/issues/13
         with:
-          path: ${{ github.workspace }}/build/reports/jacoco/testCoverage/testCoverage.xml
+          paths: ${{ github.workspace }}/build/reports/jacoco/test/jacocoTestReport.xml
           token: ${{ secrets.GITHUB_TOKEN }}
           min-coverage-overall: 40
           min-coverage-changed-files: 60
-          debug-mode: false
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-coverage-report
+          path: build/reports/jacoco/**
 
-      - name: Get the Coverage info
-        run: |
-          echo "Total coverage ${{ steps.jacoco.outputs.coverage-overall }}"
-          echo "Changed Files coverage ${{ steps.jacoco.outputs.coverage-changed-files }}"
+#  lint-markdown:
+#    name: Lint all markdown files in project
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Check out code
+#        uses: actions/checkout@v3
+#      - name: Lint markdowns
+#        uses: nosborn/github-action-markdown-cli@v3.0.1
+#        with:
+#          files: '**/*.md'
+#  checkstyle:
+#    runs-on: ubuntu-latest
+#    name: Run CheckStyle
+#    steps:
+#      - name: Check out code
+#        uses: actions/checkout@v3
+#      - name: Run CheckStyle
+#        uses: nikitasavinov/checkstyle-action@master
+#        with:
+#          checkstyle_config: checkstyle.xml
+#          level: error
+#          fail_on_error: true
+#          reporter: 'github-check'
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
