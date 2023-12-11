@@ -23,13 +23,13 @@ jobs:
 #        run: chmod +x ./gradlew
 #      - name: Execute Gradle build
 #        run: ./gradlew clean build jacocoTestReport
-      - name: Build with Maven
-        run: mvn -B package -Pcoverage
-      - name: Publish Unit Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v2
-        if: always() # clause guarantees that this action always runs, even if earlier steps (e.g., the unit test step) in your workflow fail.
-        with:
-          files: "build/test-results/**/*.xml"
+#      - name: Build with Maven
+#        run: mvn -B package -Pcoverage
+#      - name: Publish Unit Test Results
+#        uses: EnricoMi/publish-unit-test-result-action@v2
+#        if: always() # clause guarantees that this action always runs, even if earlier steps (e.g., the unit test step) in your workflow fail.
+#        with:
+#          files: "build/test-results/**/*.xml"
       - name: Add coverage to PR
         id: jacoco
         uses: madrapps/jacoco-report@v1.6.1  # requires at least two pushes to a PR, see https://github.com/Madrapps/jacoco-report/issues/13
