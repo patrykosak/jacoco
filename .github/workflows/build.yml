@@ -11,7 +11,7 @@ permissions: write-all
 
 concurrency:
   group: ${{ github.head_ref || github.ref_name }} 
-  cancel-in-progress: true
+  skip-in-progress: true
 
 jobs:
   build:
