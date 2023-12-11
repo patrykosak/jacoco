@@ -104,13 +104,10 @@ jobs:
 
     - name: Download jacoco artifacts
       id: download
-      uses: madrapps/jacoco-report@v1.6.1
+      uses: actions/download-artifact@v3
       with:
         name: jacoco
         path: target/site/jacoco
-        title: 'Code coverage'
-        update-comment: true
-        skip-if-no-changes: true
 
     - name: Add coverage to PR
       uses: madrapps/jacoco-report@v1.6.1
