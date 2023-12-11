@@ -1,4 +1,4 @@
-name: build
+name: Upload data
 
 on:
   push:
