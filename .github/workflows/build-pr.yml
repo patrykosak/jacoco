@@ -106,3 +106,5 @@ jobs:
       with:
         paths: target/site/jacoco/jacoco.xml
         token: ${{ secrets.GITHUB_TOKEN }}
+        title: 'Code coverage'
+        update-comment: true
