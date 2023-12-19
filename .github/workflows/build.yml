@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - '**'
-  pull_request:
-    branches:
-      - '**'
 permissions: write-all
 
 concurrency:
@@ -64,7 +61,7 @@ jobs:
 
       - name: Add coverage to PR
         id: jacoco
-        uses: patrykosak/jacoco-report-comments@v1.1
+        uses: patrykosak/jacoco-report-comments@V1.1
         with:
           paths:
             target/site/jacoco/jacoco.xml
