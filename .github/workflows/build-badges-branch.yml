@@ -59,9 +59,9 @@
 name: build (badges branch)
 
 on:
-  push:
+  deployment:
     branches: [ main ]
-  pull_request:
+  deployment_status:
     branches: [ main ]
   workflow_dispatch:
 
