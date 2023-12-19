@@ -64,7 +64,7 @@ jobs:
 
       - name: Add coverage to PR
         id: jacoco
-        uses: madrapps/jacoco-report@v1.6.1
+        uses: patrykosak/jacoco-report-comments@v1.1
         with:
           paths:
             target/site/jacoco/jacoco.xml
