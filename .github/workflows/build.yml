@@ -66,5 +66,7 @@ jobs:
           paths:
             target/site/jacoco/jacoco.xml
           token: ${{ secrets.GITHUB_TOKEN }}
+          title: 'Code coverage'
+          update-comment: true
           min-coverage-overall: 40
           min-coverage-changed-files: 60
