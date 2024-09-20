@@ -77,13 +77,13 @@ jobs:
 #      - name: Sleep for 60 seconds
 #        run: sleep 60s
 #        shell: bash
-
-      - name: Download jacoco artifacts
-        id: download
-        uses: actions/download-artifact@v3
-        with:
-          name: jacoco
-          path: target/site/jacoco
+#
+#      - name: Download jacoco artifacts
+#        id: download
+#        uses: actions/download-artifact@v3
+#        with:
+#          name: jacoco
+#          path: target/site/jacoco
 
       - name: Add coverage to PR
         uses: madrapps/jacoco-report@v1.7.2-alpha
