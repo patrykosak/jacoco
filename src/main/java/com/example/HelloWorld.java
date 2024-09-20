@@ -44,7 +44,7 @@ public class HelloWorld {
         // Deliberately making more complex so that we don't get 100% coverage.
         if (name.equals(greeting.substring(6, greeting.length() - 1))) {
             System.out.println("s");
-            System.out.println("s");
+//            System.out.println("s");
         }
 ////		return true;
         else {
