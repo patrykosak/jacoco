@@ -92,4 +92,3 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           title: 'Code coverage'
           update-comment: true
-          skip-if-no-changes: true
