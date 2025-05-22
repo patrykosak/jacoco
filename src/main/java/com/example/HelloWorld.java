@@ -40,14 +40,14 @@ public class HelloWorld {
 	public boolean didWeGreet(String name) {
 		// This can obviously be condensed into a single return statement.
 		// Deliberately making more complex so that we don't get 100% coverage.
-		if (name.equals(greeting.substring(6, greeting.length()-1))) {
+//		if (name.equals(greeting.substring(6, greeting.length()-1))) {
 		System.out.println("s");
 		return true;
-		}
-		else {
-			// weird unnecessary meaningless calculation that our tests won't cover
-			int x = name.length() * 100;
-			return x < 0;
-		}
+//		}
+//		else {
+//			// weird unnecessary meaningless calculation that our tests won't cover
+//			int x = name.length() * 100;
+//			return x < 0;
+//		}
 	}
 }
