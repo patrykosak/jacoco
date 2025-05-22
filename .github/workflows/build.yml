@@ -105,6 +105,6 @@ jobs:
     - name: Add coverage to PR
       uses: madrapps/jacoco-report@v1.7.2
       with:
-          paths: target/site/jacoco-aggregate/jacoco.xml
+          paths: target/site/jacoco/jacoco.xml
           token: ${{ secrets.GITHUB_TOKEN }}
           title: 'Code coverage'
