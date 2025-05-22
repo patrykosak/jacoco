@@ -96,11 +96,6 @@ jobs:
 #          git push
 #        fi
 
-    - name: Run Coverage
-      run: |
-        chmod +x gradlew
-        ./gradlew testCoverage
-
     - name: Upload Jacoco coverage report
       uses: actions/upload-artifact@v4.6.2
       with:
@@ -110,6 +105,6 @@ jobs:
     - name: Add coverage to PR
       uses: madrapps/jacoco-report@v1.7.2
       with:
-          paths: app/target/site/jacoco-aggregate/jacoco.xml
+          paths: target/site/jacoco-aggregate/jacoco.xml
           token: ${{ secrets.GITHUB_TOKEN }}
           title: 'Code coverage'
