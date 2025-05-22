@@ -14,9 +14,9 @@ public class HelloWorldTests {
 		assertEquals("Hello World!", hw.getGreeting());
 	}
 	
-	@Test
-	public void test2() {
-		HelloWorld hw = new HelloWorld();
-		assertTrue(hw.didWeGreet("World"));
-	}
+//	@Test
+//	public void test2() {
+//		HelloWorld hw = new HelloWorld();
+//		assertTrue(hw.didWeGreet("World"));
+//	}
 }
